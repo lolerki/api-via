@@ -13,8 +13,29 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource(
- *  normalizationContext={"groups"={"user_read"}},
- *  denormalizationContext={"groups"={"user_write"}}
+ *     collectionOperations={
+ *           "get"={
+ *              "normalization_context"={"groups"={"user_get_collection"}}
+ *          },
+ *          "post"={
+ *             "method"="POST",
+ *             "normalization_context"={"groups"={"user_post_collection"}}
+ *          }
+ *     },
+ *     itemOperations={
+ *           "get"={
+ *             "method"="GET",
+ *             "normalization_context"={"groups"={"user_get_item"}}
+ *            },
+ *           "put"={
+ *             "method"="PUT",
+ *             "normalization_context"={"groups"={"user_put_item"}}
+ *           },
+ *           "delete"={
+ *             "method"="DELETE",
+ *             "normalization_context"={"groups"={"user_delete_item"}}
+ *          }
+ *     }
  *  )
  * @ORM\Table(name="user_account")
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -25,37 +46,39 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"user_get_collection"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     * @Groups({"user_read","user_write"})
+     * @Groups({"user_get_collection","user_post_collection","user_get_item","user_put_item","user_delete_item"})
      */
     private $email;
 
     /**
      * @ORM\Column(type="json")
-     * @Groups({"user_write"})
+     * @Groups({"user_get_collection","user_post_collection","user_get_item","user_put_item"})
      */
     private $roles = [];
 
     /**
      * @var string
      * @ORM\Column(type="string")
-     *  @Groups({"user_read"})
+     * @Groups({"user_get_collection","user_post_collection","user_get_item","user_put_item"})
+     *
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user_write","user_read"})
+     * @Groups({"user_get_collection","user_post_collection","user_put_item","user_delete_item"})
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user_write","user_read"})
+     * @Groups({"user_get_collection","user_post_collection","user_put_item"})
      */
     private $firstname;
 
@@ -83,7 +106,7 @@ class User implements UserInterface
      */
     public function getUsername(): string
     {
-        return (string) $this->email;
+        return (string)$this->email;
     }
 
     /**
@@ -110,7 +133,7 @@ class User implements UserInterface
      */
     public function getPassword(): string
     {
-        return (string) $this->password;
+        return (string)$this->password;
     }
 
     public function setPassword(string $password): self
