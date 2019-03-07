@@ -22,11 +22,13 @@ class TravelClass
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @assert\type("string")
      */
     private $name;
 
     /**
      * @ORM\Column(type="integer")
+     * @assert\type("integer")
      */
     private $price;
 

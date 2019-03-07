@@ -22,11 +22,14 @@ class Product
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\type("string")
      */
     private $name;
 
     /**
      * @ORM\Column(type="integer")
+     * @assert\type("integer")
+     * @var message="dangerersité du produit de 1 à 10"
      */
     private $dangerousness;
 

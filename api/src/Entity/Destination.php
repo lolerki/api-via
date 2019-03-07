@@ -22,16 +22,18 @@ class Destination
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\type("string")
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\type("string")
      */
     private $country;
-
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Flight", mappedBy="destination")
+     * @Assert\type("string")
      */
     private $flights;
 

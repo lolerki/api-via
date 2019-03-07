@@ -21,17 +21,19 @@ class Assignation
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Flight", inversedBy="assignations")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank
      */
     private $flight;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Pilot", inversedBy="assignations")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank
      */
-    private $pilot;
-
+    private $pilot
     /**
      * @ORM\Column(type="boolean")
+     * @Assert\NotNull
      */
     private $finished;
 

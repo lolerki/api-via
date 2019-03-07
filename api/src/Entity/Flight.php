@@ -23,34 +23,40 @@ class Flight
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Destination", inversedBy="flights")
      * @ORM\JoinColumn(nullable=false)
+     * @assert\notBlank
      */
     private $departure;
 
     /**
      * @ORM\Column(type="datetime")
+     * @assert\DateTime
      */
     private $departureTime;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Destination", inversedBy="flights")
      * @ORM\JoinColumn(nullable=false)
+     * @assert\notBlank
      */
     private $destination;
 
     /**
      * @ORM\Column(type="datetime")
+     * @assert\DateTime
      */
     private $arrivingTime;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Plane", inversedBy="flights")
      * @ORM\JoinColumn(nullable=false)
+     * @assert\notBlank
      */
     private $plane;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Runway", inversedBy="flights")
      * @ORM\JoinColumn(nullable=false)
+     * @assert\notBlank
      */
     private $runway;
 

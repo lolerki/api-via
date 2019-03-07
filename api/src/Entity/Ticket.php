@@ -20,23 +20,27 @@ class Ticket
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @assert\type("string")
      */
     private $reference;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Flight", inversedBy="tickets")
      * @ORM\JoinColumn(nullable=false)
+     * @assert\notBlank
      */
     private $flight;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\TravelClass", inversedBy="tickets")
      * @ORM\JoinColumn(nullable=false)
+     * @assert\notBlank
      */
     private $travelClass;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Criminal", inversedBy="tickets")
+     * @assert\notBlank
      */
     private $criminal;
 

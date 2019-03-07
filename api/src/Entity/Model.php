@@ -22,31 +22,41 @@ class Model
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\type("string")
      */
     private $name;
 
     /**
      * @ORM\Column(type="integer")
+     * @assert\type("integer")
+     * @var message="nombre de workers par avion. entre 1 et 5"
      */
     private $workers;
 
     /**
      * @ORM\Column(type="integer")
+     * @assert\type("integer")
+     * @var message="nombre de place par avion. entre 50 et 200"
      */
     private $places;
 
     /**
      * @ORM\Column(type="integer")
+     * @assert\type("integer")
+     * @var message="type d'avion. de 1 à 3"
      */
     private $size;
-
     /**
      * @ORM\Column(type="integer")
+     * @assert\type("integer")
+     * @var message="nombre de place dans la soute. entre 100 et 500"
      */
     private $cargo;
 
     /**
      * @ORM\Column(type="integer")
+     * @assert\type("integer")
+     * @var message="ndifficulté de l'avion. entre 1 et 3"
      */
     private $complexity;
 

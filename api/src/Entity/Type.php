@@ -22,6 +22,7 @@ class Type
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @assert\type("string")
      */
     private $name;
 

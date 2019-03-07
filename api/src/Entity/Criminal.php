@@ -28,17 +28,18 @@ class Criminal
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Crime", inversedBy="criminals")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\type("string")
      */
     private $crime;
 
-    /**
+    /* 
      * @ORM\OneToMany(targetEntity="App\Entity\Ticket", mappedBy="criminal")
      */
     private $tickets;
 
     /**
      * @ORM\JoinTable(name="luggage")
-     * @ORM\ManyToMany(targetEntity="App\Entity\Type", inversedBy="luggage")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Type", inversedBy="luggage"
      */
     private $luggage;
 

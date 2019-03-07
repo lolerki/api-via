@@ -22,6 +22,7 @@ class Crime
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @assert\Type("string")
      */
     private $name;
 

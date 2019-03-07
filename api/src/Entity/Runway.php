@@ -22,11 +22,14 @@ class Runway
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @assert\type("string")
      */
     private $name;
 
     /**
      * @ORM\Column(type="integer")
+     * @assert\type("integer")
+     * @var_dump( message="taille de la piste de à 3")
      */
     private $size;
 
