@@ -3,12 +3,37 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     collectionOperations={
+ *           "get"={
+ *              "normalization_context"={"groups"={"type_get_collection"}}
+ *          },
+ *          "post"={
+ *             "method"="POST",
+ *             "normalization_context"={"groups"={"type_post_collection"}}
+ *          }
+ *     },
+ *     itemOperations={
+ *           "get"={
+ *             "method"="GET",
+ *             "normalization_context"={"groups"={"type_get_item"}}
+ *            },
+ *           "put"={
+ *             "method"="PUT",
+ *             "normalization_context"={"groups"={"type_put_item"}}
+ *           },
+ *           "delete"={
+ *             "method"="DELETE",
+ *             "normalization_context"={"groups"={"type_delete_item"}}
+ *          }
+ *     }
+ *  )
  * @ORM\Entity(repositoryClass="App\Repository\TypeRepository")
  */
 class Type
@@ -17,16 +42,19 @@ class Type
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"type_get_collection"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"type_get_collection","type_post_collection","type_get_item","type_put_item"})
      */
     private $name;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Product", mappedBy="type")
+     * @Groups({"type_get_collection"})
      */
     private $products;
 

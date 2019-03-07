@@ -52,7 +52,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     * @Groups({"user_get_collection","user_post_collection","user_get_item","user_put_item","user_delete_item"})
+     * @Groups({"user_get_collection","user_post_collection","user_get_item","user_put_item"})
      */
     private $email;
 
@@ -72,7 +72,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user_get_collection","user_post_collection","user_put_item","user_delete_item"})
+     * @Groups({"user_get_collection","user_post_collection","user_put_item"})
      */
     private $lastname;
 
