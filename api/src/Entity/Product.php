@@ -9,7 +9,31 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     collectionOperations={
+ *           "get"={
+ *              "normalization_context"={"groups"={"product_get_collection"}}
+ *          },
+ *          "post"={
+ *             "method"="POST",
+ *             "normalization_context"={"groups"={"product_post_collection"}}
+ *          }
+ *     },
+ *     itemOperations={
+ *           "get"={
+ *             "method"="GET",
+ *             "normalization_context"={"groups"={"product_get_item"}}
+ *            },
+ *           "put"={
+ *             "method"="PUT",
+ *             "normalization_context"={"groups"={"product_put_item"}}
+ *           },
+ *           "delete"={
+ *             "method"="DELETE",
+ *             "normalization_context"={"groups"={"product_delete_item"}}
+ *          }
+ *     }
+ *  )
  * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
  */
 class Product

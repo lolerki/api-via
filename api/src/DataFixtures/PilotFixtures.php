@@ -20,6 +20,7 @@ class PilotFixtures extends Fixture implements DependentFixtureInterface
         for ($i=0; $i <  20; $i++) { 
             $fixture = (new Pilot())
                 ->setLastName($faker->lastName())
+                ->setName($faker->name())
                 ->setFirstName($faker->firstName(null))
                 ->setSkill($faker->numberBetween($min = 1, $max = 3))
                 ->setCrime($crimes[array_rand($crimes, 1)]);

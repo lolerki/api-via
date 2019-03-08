@@ -5,10 +5,35 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     collectionOperations={
+ *           "get"={
+ *              "normalization_context"={"groups"={"travel_get_collection"}}
+ *          },
+ *          "post"={
+ *             "method"="POST",
+ *             "normalization_context"={"groups"={"travel_post_collection"}}
+ *          }
+ *     },
+ *     itemOperations={
+ *           "get"={
+ *             "method"="GET",
+ *             "normalization_context"={"groups"={"travel_get_item"}}
+ *            },
+ *           "put"={
+ *             "method"="PUT",
+ *             "normalization_context"={"groups"={"travel_put_item"}}
+ *           },
+ *           "delete"={
+ *             "method"="DELETE",
+ *             "normalization_context"={"groups"={"travel_delete_item"}}
+ *          }
+ *     }
+ *  )
  * @ORM\Entity(repositoryClass="App\Repository\CrimeRepository")
  */
 class Crime

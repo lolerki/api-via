@@ -65,7 +65,7 @@ class User implements UserInterface
     /**
      * @var string
      * @ORM\Column(type="string")
-     * @Groups({"user_get_collection","user_post_collection","user_get_item","user_put_item"})
+     * @Groups({"user_get_collection","user_post_collection","user_put_item"})
      *
      */
     private $password;
