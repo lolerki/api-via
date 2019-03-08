@@ -10,25 +10,25 @@ use Doctrine\ORM\Mapping as ORM;
  * @ApiResource(
  *     collectionOperations={
  *           "get"={
- *              "normalization_context"={"groups"={"travel_get_collection"}}
+ *              "normalization_context"={"groups"={"assignation_get_collection"}}
  *          },
  *          "post"={
  *             "method"="POST",
- *             "normalization_context"={"groups"={"travel_post_collection"}}
+ *             "normalization_context"={"groups"={"assignation_post_collection"}}
  *          }
  *     },
  *     itemOperations={
  *           "get"={
  *             "method"="GET",
- *             "normalization_context"={"groups"={"travel_get_item"}}
+ *             "normalization_context"={"groups"={"assignation_get_item"}}
  *            },
  *           "put"={
  *             "method"="PUT",
- *             "normalization_context"={"groups"={"travel_put_item"}}
+ *             "normalization_context"={"groups"={"assignation_put_item"}}
  *           },
  *           "delete"={
  *             "method"="DELETE",
- *             "normalization_context"={"groups"={"travel_delete_item"}}
+ *             "normalization_context"={"groups"={"assignation_delete_item"}}
  *          }
  *     }
  *  )
